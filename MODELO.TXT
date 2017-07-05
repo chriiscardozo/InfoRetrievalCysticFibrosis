@@ -1,0 +1,2 @@
+DESCRIÇÃO DO MODELO:
+O modelo é salvo em formato BINARIO com o auxílio da biblioteca pandas, construindo um objeto da classe DataFrame. Este binário contém a matriz TF-IDF, onde cada linha representa um documento e cada coluna um termo. O TF-IDF é calculado da forma mais simples sem normalizações.
