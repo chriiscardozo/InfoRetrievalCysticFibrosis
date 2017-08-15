@@ -2,6 +2,9 @@ from unicodedata import normalize
 import string
 import time
 import re
+from nltk.stem.porter import *
+
+stemmer = PorterStemmer()
 
 def tempo(start, task, minutes=False):
 	den = 1.0
@@ -17,7 +20,9 @@ def erro(msg, exiting=True):
 	if(exiting): exit(0)
 
 
-def normalize_token(token):
+def normalize_token(token, stemming=True):
 	token = normalize('NFKD', token).encode('ASCII','ignore').decode('ASCII')
-	if(not re.fullmatch('[' + string.punctuation + ']+', token)): return token.upper()
+	if(not re.fullmatch('[' + string.punctuation + ']+', token)):
+		if(stemming): return stemmer.stem(token).upper()
+		else: return token.upper()
 	else: return ''
